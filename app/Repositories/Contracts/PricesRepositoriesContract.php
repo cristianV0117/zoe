@@ -7,4 +7,6 @@ namespace App\Repositories\Contracts;
 interface PricesRepositoriesContract
 {
     public function updatePricesWithAbcInformation(): array;
+
+    public function updatePriceInformation(array $request): array;
 }
