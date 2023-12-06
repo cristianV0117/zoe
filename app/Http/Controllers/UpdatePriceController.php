@@ -16,9 +16,13 @@ final class UpdatePriceController extends Controller
         private readonly UpdatePriceMailableContract $updatePriceMailableContract
     ) {}
 
-    public function __invoke(Request $request): void
+    public function __invoke(Request $request)
     {
         $response = $this->pricesRepositoriesContract->updatePriceInformation($request->toArray());
         $this->updatePriceMailableContract->mail(new UpdatePriceValueObject($response));
+        return response(
+            $response,
+            200
+        );
     }
 }

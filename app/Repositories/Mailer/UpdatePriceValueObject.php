@@ -25,7 +25,7 @@ final class UpdatePriceValueObject
 
     private function to(): void
     {
-        $this->mailObject->from = 'cvo6372@gmail.com';
+        $this->mailObject->to = 'cvo6372@gmail.com';
     }
 
     private function setFrom(): void

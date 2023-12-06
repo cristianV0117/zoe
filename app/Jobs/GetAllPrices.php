@@ -30,12 +30,13 @@ final class GetAllPrices implements ShouldQueue
     /**
      * Execute the job.
      */
-    public function handle(): void
+    public function handle(): array
     {
         $status = $this->pricesRepositoriesContract->updatePricesWithAbcInformation();
         array_map(function ($value) {
             $this->updatePriceMailableContract->mail(new UpdatePriceValueObject($value));
         }, $status);
+        return $status;
         /*
          * status contiene el arreglo con el response de cada update realizado dependiendo de la
          * informacion que proporciona ABC
